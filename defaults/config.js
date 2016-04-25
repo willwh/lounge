@@ -321,4 +321,12 @@ module.exports = {
 	// @default  null
 	//
 	oidentd: null,
+
+	//
+	// Run super alpha ghetto monkey-paching packages
+	//
+	// @type     array<package-name>
+	// @default  []
+	//
+	packages: [],
 };

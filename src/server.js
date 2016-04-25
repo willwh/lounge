@@ -8,19 +8,43 @@ var fs = require("fs");
 var io = require("socket.io");
 var dns = require("dns");
 var Helper = require("./helper");
+var ServeStatic = require("serve-static");
 var config = {};
 
 var manager = null;
+var packages = null;
+var stylesheets = [];
+var scripts = [];
 
 module.exports = function(options) {
 	manager = new ClientManager();
 	config = Helper.getConfig();
 	config = _.extend(config, options);
+	packages = require("./packages");
 
 	var app = express()
 		.use(allRequests)
 		.use(index)
+		.use(clientPackages)
 		.use(express.static("client"));
+
+	packages.forEachProp("client", function(client, package) {
+		if ("stylesheets" in client && client.stylesheets instanceof Array) {
+			client.stylesheets.forEach(function(css) {
+				stylesheets.push(package.webroot + css);
+			});
+		}
+
+		if ("scripts" in client && client.scripts instanceof Array) {
+			client.scripts.forEach(function(script) {
+				scripts.push(package.webroot + script);
+			});
+		}
+	});
+
+	packages.emit("httpServer", app);
+
+	app.enable("trust proxy");
 
 	var server = null;
 	var https = config.https || {};
@@ -94,7 +118,11 @@ function index(req, res, next) {
 	return fs.readFile("client/index.html", "utf-8", function(err, file) {
 		var data = _.merge(
 			pkg,
-			config
+			config,
+			{
+				stylesheets: stylesheets,
+				scripts: scripts
+			}
 		);
 		var template = _.template(file);
 		res.setHeader("Content-Security-Policy", "default-src *; style-src * 'unsafe-inline'; script-src 'self'; child-src 'none'; object-src 'none'; form-action 'none'; referrer no-referrer;");
@@ -254,4 +282,13 @@ function auth(data) {
 			socket.emit("auth", {success: success});
 		}
 	}
+}
+
+function clientPackages(req, res, next) {
+	if (!req.url.startsWith("/packages/")) {
+		return next();
+	}
+
+	req.url = req.url.replace(/^\/packages\/([^?&#]*?)\/(.*)$/, "/$1/client/$2");
+	ServeStatic("packages/")(req, res, next);
 }

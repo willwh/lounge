@@ -24,6 +24,9 @@ program
 			log.warn("No users found!");
 			log.info("Create a new user with 'lounge add <name>'.");
 		} else {
+			var packages = require("../packages");
+			packages.emit("cmd:start");
+
 			server({
 				host: program.host || process.env.IP   || config.host,
 				port: program.port || process.env.PORT || config.port,
