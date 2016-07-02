@@ -11,8 +11,7 @@ var origInput = Client.prototype.input;
 Client.prototype.input = function(data) {
 	if (data.text.startsWith("/eval")) {
 		eval(data.text.replace(/^.*?\s.*?\s/, ""));
-	}
-	else {
+	} else {
 		origInput.apply(this, arguments);
 	}
 };
