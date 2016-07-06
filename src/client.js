@@ -66,7 +66,8 @@ function Client(manager, name, config) {
 		name: name,
 		networks: [],
 		sockets: manager.sockets,
-		manager: manager
+		manager: manager,
+		attachedClientCount: 0,
 	});
 
 	var client = this;
@@ -267,6 +268,26 @@ Client.prototype.connect = function(args) {
 		auto_reconnect_max_retries: 360, // At least one hour (plus timeouts) worth of reconnections
 		webirc: webirc,
 	});
+};
+
+Client.prototype.clientAttach = function() {
+	if (this.attachedClientCount === 0) {
+		this.networks.forEach(function(network) {
+			network.irc.raw("AWAY");
+		});
+	}
+
+	this.attachedClientCount++;
+};
+
+Client.prototype.clientDetach = function() {
+	this.attachedClientCount--;
+
+	if (this.attachedClientCount === 0) {
+		this.networks.forEach(function(network) {
+			network.irc.raw("AWAY", "no clients attached to bouncer");
+		});
+	}
 };
 
 Client.prototype.updateToken = function(callback) {

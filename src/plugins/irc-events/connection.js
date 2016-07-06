@@ -18,6 +18,10 @@ module.exports = function(irc, network) {
 			}));
 		}
 
+		if (client.attachedClientCount === 0) {
+			irc.raw("AWAY", "no clients attached to bouncer");
+		}
+
 		var delay = 1000;
 		var commands = network.commands;
 		if (Array.isArray(commands)) {

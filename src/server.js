@@ -103,6 +103,11 @@ function init(socket, client) {
 		socket.emit("auth", {success: true});
 		socket.on("auth", auth);
 	} else {
+		socket.on("disconnect", function() {
+			client.clientDetach();
+		});
+		client.clientAttach();
+
 		socket.on(
 			"input",
 			function(data) {
