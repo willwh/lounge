@@ -176,6 +176,39 @@ button {
 	color: rgba(0, 0, 0, .35) !important;
 }
 
+/* Icons */
+
+#viewport .lt:before,
+#viewport .rt:before,
+#chat button.menu:before,
+#sidebar .chan:before,
+#chat .title:before,
+#footer .icon,
+#chat .count:before,
+#settings #play:before,
+#form #submit:before {
+	font: 14px FontAwesome;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#chat .invite .from:before,
+#chat .join .from:before,
+#chat .kick .from:before,
+#chat .part .from:before,
+#chat .quit .from:before,
+#chat .topic .from:before,
+#chat .mode .from:before,
+#chat .ctcp .from:before,
+#chat .whois .from:before,
+#chat .nick .from:before,
+#chat .action .from:before,
+.context-menu-item:before {
+	font-family: FontAwesome;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 #wrap {
 	height: 100%;
 	overflow: hidden;
@@ -203,24 +236,15 @@ button {
 }
 
 #viewport .lt:before {
-	font: 14px FontAwesome;
-	content: "\f0c9";
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	content: "\f0c9"; /* http://fontawesome.io/icon/bars/ */
 }
 
 #viewport .rt:before {
-	font: 14px FontAwesome;
-	content: "\f0c0";
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	content: "\f0c0"; /* http://fontawesome.io/icon/users/ */
 }
 
 #chat button.menu:before {
-	font: 14px FontAwesome;
-	content: "\f142";
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	content: "\f142"; /* http://fontawesome.io/icon/ellipsis-v/ */
 }
 
 #viewport .rt {
@@ -317,11 +341,9 @@ button {
 
 #sidebar .chan:before,
 #chat .title:before {
-	font: 14px FontAwesome;
 	float: left;
 	margin-top: 3px;
 	margin-right: 12px;
-	width: 14px;
 	text-align: center;
 }
 
@@ -337,17 +359,17 @@ button {
 
 #sidebar .chan.lobby:before,
 #chat .lobby .title:before {
-	content: "\f0a0";
+	content: "\f0a0"; /* http://fontawesome.io/icon/hdd-o/ */
 }
 
 #sidebar .chan.query:before,
 #chat .query .title:before {
-	content: "\f0e6";
+	content: "\f0e6"; /* http://fontawesome.io/icon/comments-o/ */
 }
 
 #sidebar .chan.channel:before,
 #chat .channel .title:before {
-	content: "\f0f6";
+	content: "\f0f6"; /* http://fontawesome.io/icon/file-text-o/ */
 }
 
 #sidebar .chan .name {
@@ -457,7 +479,6 @@ button {
 #footer .icon {
 	color: #9ca5b4;
 	display: inline-block;
-	font: 14px FontAwesome;
 	line-height: 34px;
 	padding: 0 12px;
 }
@@ -481,19 +502,19 @@ button {
 }
 
 #footer .sign-in:before {
-	content: "\f023";
+	content: "\f023"; /* http://fontawesome.io/icon/lock/ */
 }
 
 #footer .connect:before {
-	content: "\f067";
+	content: "\f067"; /* http://fontawesome.io/icon/plus/ */
 }
 
 #footer .settings:before {
-	content: "\f013";
+	content: "\f013"; /* http://fontawesome.io/icon/cog/ */
 }
 
 #footer .sign-out:before {
-	content: "\f011";
+	content: "\f011"; /* http://fontawesome.io/icon/power-off/ */
 }
 
 #main {
@@ -861,8 +882,7 @@ button {
 }
 
 #chat .invite .from:before {
-	font-family: FontAwesome;
-	content: "\f003";
+	content: "\f003"; /* http://fontawesome.io/icon/envelope-o/ */
 	color: #2ecc40;
 }
 
@@ -878,52 +898,44 @@ button {
 }
 
 #chat .join .from:before {
-	font-family: FontAwesome;
-	content: "\f090";
+	content: "\f090"; /* http://fontawesome.io/icon/sign-in/ */
 	color: #2ecc40;
 }
 
 #chat .kick .from:before {
-	font-family: FontAwesome;
-	content: "\f05e";
+	content: "\f05e"; /* http://fontawesome.io/icon/ban/ */
 	color: #ff4136;
 }
 
 #chat .part .from:before,
 #chat .quit .from:before {
-	font-family: FontAwesome;
-	content: "\f08b";
+	content: "\f08b"; /* http://fontawesome.io/icon/sign-out/ */
 	color: #ff4136;
 	display: inline-block;
 	transform: rotate(180deg);
 }
 
 #chat .topic .from:before {
-	font-family: FontAwesome;
-	content: "\f0a1";
+	content: "\f0a1"; /* http://fontawesome.io/icon/bullhorn/ */
 	color: #2ecc40;
 }
 
 #chat .mode .from:before {
-	font-family: FontAwesome;
-	content: "\f05a";
+	content: "\f05a"; /* http://fontawesome.io/icon/info-circle/ */
 	color: #2ecc40;
 }
 
 #chat .ctcp .from:before {
-	font-family: FontAwesome;
-	content: "\f0f6";
+	content: "\f0f6"; /* http://fontawesome.io/icon/file-text-o/ */
 }
 
 #chat .whois .from:before {
-	font-family: FontAwesome;
-	content: "\f007";
+	content: "\f007"; /* http://fontawesome.io/icon/user/ */
 	color: #2ecc40;
 }
 
 #chat .nick .from:before {
-	font-family: FontAwesome;
-	content: "\f007";
+	content: "\f007"; /* http://fontawesome.io/icon/user/ */
 	color: #2ecc40;
 }
 
@@ -934,8 +946,7 @@ button {
 }
 
 #chat .action .from:before {
-	font-family: FontAwesome;
-	content: "\f005";
+	content: "\f005"; /* http://fontawesome.io/icon/star/ */
 }
 
 #chat .notice .time,
@@ -1027,8 +1038,7 @@ button {
 
 #chat .count:before {
 	color: #cfcfcf;
-	font: 14px FontAwesome;
-	content: "\f002";
+	content: "\f002"; /* http://fontawesome.io/icon/search/ */
 	position: absolute;
 	right: 18px;
 	line-height: 50px;
@@ -1186,8 +1196,7 @@ button {
 }
 
 #settings #play:before {
-	content: "\f028";
-	font: 14px FontAwesome;
+	content: "\f028"; /* http://fontawesome.io/icon/volume-up/ */
 	margin-right: 9px;
 }
 
@@ -1284,10 +1293,7 @@ button {
 }
 
 #form #submit:before {
-	font: 14px FontAwesome;
-	content: "\f1d8";
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	content: "\f1d8"; /* http://fontawesome.io/icon/paper-plane/ */
 }
 
 #form #submit:hover {
@@ -1338,23 +1344,20 @@ button {
 }
 
 .context-menu-item:before {
-	font-family: FontAwesome;
 	width: 20px;
 	display: inline-block;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 .context-menu-user:before {
-	content: "\f007";
+	content: "\f007"; /* http://fontawesome.io/icon/user/ */
 }
 
 .context-menu-chan:before {
-	content: "\f0f6";
+	content: "\f0f6"; /* http://fontawesome.io/icon/file-text-o/ */
 }
 
 .context-menu-close:before {
-	content: "\f00d";
+	content: "\f00d"; /* http://fontawesome.io/icon/times/ */
 }
 
 /**
